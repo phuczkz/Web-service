@@ -1,0 +1,10 @@
+<div class="container">
+<div class="card">
+  <img src="{{product.img}}">
+  <p>{{ product.name }}</p>
+  <p>Còn {{ product.inStock }} phần</p>
+  <p>{{ product.price }} vnđ </p>
+  <button [disabled]="!product.quantity" (click)="addToCart()">Thêm vào giỏ hàng
+  </button>
+</div>
+</div>

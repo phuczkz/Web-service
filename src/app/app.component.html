@@ -1,41 +1,17 @@
-<h1 style="font-size: 50px; margin-bottom: 50px;">CỬA HÀNG GÀ RÁN</h1>
 
-<div class="containerItem">
-@for (item of products; track $index) {
-  <div> 
-    <div class="card">
-    <img [src]="item.img">
-    <h2>{{item.name}}</h2>
-    <p style="font-weight: bold;">{{item.price}} Vnđ</p>
-    <p style="font-weight: bold;"> Số lượng: {{item.inStock}} phần</p>
-
-    <button [disabled]="item.inStock != 0 ?false:true" (click)="this.addToCart($index)" >Thêm vào giỏ hàng</button>
-    </div>
-  </div>
-}
-</div>
-
-<div>
-<h1 style="margin-top: 50px;margin-left: 20px; text-align: left; text-decoration: underline;">Giỏ hàng của tôi </h1>
-<div class="detail">
-    <span>Tên món ăn</span>
-    <span>Giá</span>
-    <span>Số Lượng</span>
-</div>
-<ol>
-@for (item of cart; track $index) {
-  <li><p>{{item.name}}</p>
-    <p>{{item.price}}</p>
-    <p>{{item.quantity}}</p>
-  </li>  
-  <button (click)="deletefromCart($index)" style="margin-left: 150px;">Xóa</button>
-  
-}
-@empty {
-    <h2>Chưa có món ăn!!!</h2>
+<app-navbar></app-navbar>
+<div class="container">
+  @for (product of this.storeService.products; track $index) {
+    <app-card [product]="product" (addToCartEvent)="this.storeService.addToCart($index)" ></app-card>
   }
-</ol>
 </div>
-<!-- <button (click)="totalcost()">Thanh toán</button> -->
- <label>Phải thanh toán:</label>
-<label>{{this.total}} Vnđ</label>
+
+<h1>Giỏ hàng của tôi</h1>
+@for (product of this.storeService.cart; track $index) {
+  <app-cart [product]="product" (deleteInCartEvent)="this.storeService.deletefromCart($index)" ></app-cart>
+}
+
+<app-totalcost [total]="storeService.total"></app-totalcost>
+
+
+

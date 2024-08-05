@@ -1,0 +1,32 @@
+#navbar-container {
+  background-color: #FF5B6A;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+#navbar-container nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: space-around; // Space items evenly
+  align-items: center; // Center items vertically
+  width: 100%; // Ensure the ul takes full width
+}
+
+#navbar-container nav ul li {
+  margin: 0 20px; // Optional: Add space between items
+}
+
+#navbar-container nav ul li a {
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+  padding: 10px 20px; // Add padding for better click area
+}
+
+#navbar-container nav ul li a:hover {
+  background-color: #111;
+}
